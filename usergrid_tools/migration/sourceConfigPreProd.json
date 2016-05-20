@@ -1,0 +1,11 @@
+{
+  "endpoint": {
+    "api_url": "http://pasuilb-1994131342.eu-de1.plex.vodafone.com:13808/AppServices"
+  },
+  "credentials": {
+    "mplusdev2": {
+      "client_id": "b3U6iCdbWjNtEeSnBE3W7bbx7Q",
+      "client_secret": "b3U67Xuks4myYC4nOkLuTk4BE6vse6U"
+    }
+  }
+}

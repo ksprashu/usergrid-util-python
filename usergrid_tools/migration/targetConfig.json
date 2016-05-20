@@ -1,0 +1,11 @@
+{
+  "endpoint": {
+    "api_url": "https://ug21.e2e.apigee.net"
+  },
+  "credentials": {
+    "prashanth": {
+      "client_id": "b3U64yOVTuFjEeWEUwaaffJ-hw",
+      "client_secret": "b3U6CNTRdMJ6vX8DknIoo4ijnKvJCPM"
+    }
+  }
+}
