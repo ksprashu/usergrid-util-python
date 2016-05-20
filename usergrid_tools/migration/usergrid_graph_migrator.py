@@ -1324,12 +1324,12 @@ def parse_args():
     parser.add_argument('--page_sleep_time',
                         help='The number of seconds to wait between retrieving pages from the UsergridQueryIterator',
                         type=float,
-                        default=.5)
+                        default=0)
 
     parser.add_argument('--entity_sleep_time',
                         help='The number of seconds to wait between retrieving pages from the UsergridQueryIterator',
                         type=float,
-                        default=.1)
+                        default=0)
 
     parser.add_argument('--collection_workers',
                         help='The number of worker processes to do the migration',
@@ -1372,33 +1372,23 @@ def parse_args():
                         default='select * order by created asc')
     # default='select * order by created asc')
 
-    parser.add_argument('--skip_cache',
-                        dest='skip_cache',
-                        action='store_true')
-
     parser.add_argument('--skip_cache_read',
+                        help='Skip reading the cache (modified timestamps and graph edges)',
                         dest='skip_cache_read',
                         action='store_true')
 
     parser.add_argument('--skip_cache_write',
+                        help='Skip updating the cache with modified timestamps of entities and graph edges',
                         dest='skip_cache_write',
                         action='store_true')
 
     parser.add_argument('--create_apps',
+                        help='Create apps at the target if they do not exist',
                         dest='create_apps',
                         action='store_true')
 
-    parser.add_argument('--with_data',
-                        dest='with_data',
-                        action='store_true')
-
     parser.add_argument('--nohup',
-                        dest='specifies not to use stdout for logging',
-                        action='store_true')
-
-    parser.add_argument('--repair',
-                        help='Attempt to migrate missing data',
-                        dest='repair',
+                        help='specifies not to use stdout for logging',
                         action='store_true')
 
     parser.add_argument('--graph',
@@ -1605,7 +1595,12 @@ def main():
     init_logging()
 
     try:
+        # this does not try to connect to redis
         cache = redis.StrictRedis(host='localhost', port=6379, db=0)
+
+        # this is necessary to test the connection to redis
+        cache.get('usergrid')
+
     except:
         logger.error('Error connecting to Redis cache, consider using Redis to be able to optimize the process...')
         logger.error('Error connecting to Redis cache, consider using Redis to be able to optimize the process...')
