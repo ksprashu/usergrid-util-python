@@ -63,3 +63,6 @@ sandbox
 *.lock
 
 /usergrid_tools/migration/*.json
+/usergrid_tools/migration/targetConfig.json
+/usergrid_tools/migration/sourceConfigPreProd.json
+/usergrid_tools/migration/sourceConfigProd.json
